@@ -70,7 +70,6 @@ import Drawer from "./Drawer";
 const ToggleDrawer = () => {
   const [overlay, setOverlay] = useState(false);
   const [drawerContainer, setDrawerContainer] = useState(false);
-  //forDrawerLeft
   const handleDrawer = (condition) => {
     setDrawerContainer(condition);
     setOverlay(condition);
