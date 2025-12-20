@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React, { useRef } from "react";
 const ScrollView = () => {
   const scrollSection = [
     { id: 1, text: "1" },
@@ -17,8 +16,9 @@ const ScrollView = () => {
     5: "bg-purple-600",
   };
 //for scrolling y section
+const sectionRef=useRef({})
   const scrollFunction = (id) => {
-    const el = document.getElementById(id);
+    const el = sectionRef.current[id];
     el.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -48,7 +48,7 @@ const ScrollView = () => {
       {scrollSection.map((item) => (
         <div
           key={item.id}
-          id={item.id}
+          ref={(el)=>sectionRef.current[item.id]=el}
           className={`max-w-[800px] mt-20  text-center flex items-center justify-center mx-auto h-100 rounded-2xl  ${
             bgColor[item.id]
           }`}
